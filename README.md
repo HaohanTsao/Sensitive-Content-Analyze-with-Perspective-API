@@ -7,7 +7,7 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
 1. Clone the repository:
 
     ```bash
-    git clone [https://github.com/yourusername/your-repo.git](https://github.com/HaohanTsao/Sensitive-Content-Analyze-with-Perspective-API.git)
+    git clone https://github.com/HaohanTsao/Sensitive-Content-Analyze-with-Perspective-API.git
     cd Sensitive-Content-Analyze-with-Perspective-API
     ```
 
