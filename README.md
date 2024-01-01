@@ -7,8 +7,8 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repo.git
-    cd your-repo
+    git clone [https://github.com/yourusername/your-repo.git](https://github.com/HaohanTsao/Sensitive-Content-Analyze-with-Perspective-API.git)
+    cd Sensitive-Content-Analyze-with-Perspective-API
     ```
 
 2. Install the required packages:
@@ -30,8 +30,7 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
     Replace `your_GCP_api_key_here` with your actual GCP API key.
 
 ## Usage
-
-Run the `quickstart.py` to try:
+Checkout and run the `quickstart.py` to try:
 
     ```bash
     python quickstart.py
