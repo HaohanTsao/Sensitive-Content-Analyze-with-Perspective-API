@@ -32,6 +32,6 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
 ## Usage
 Checkout and run the `quickstart.py` to try:
 
-    ```bash
-    python quickstart.py
-    ```
+```bash
+python quickstart.py
+```
