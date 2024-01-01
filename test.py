@@ -6,3 +6,4 @@ import os
 
 api_key = os.getenv('API_KEY')
 
+# test with real data
