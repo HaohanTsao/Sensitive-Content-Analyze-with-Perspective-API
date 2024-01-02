@@ -38,12 +38,14 @@ python quickstart.py
 
 ## Test
 
+| index | value |
 |------|----|
 | True Positive | 15 |
 | True Negative | 230 |
 | False Positive | 0 |
 | False Negative | 2 |
 
+| index | value |
 |------|----|
 | Accuracy | 0.9924 |
 | Recall | 0.8824 |
