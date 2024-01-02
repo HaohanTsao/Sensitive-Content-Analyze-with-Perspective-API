@@ -38,17 +38,8 @@ python quickstart.py
 
 ## Test
 
-| index | value |
-|------|----|
-| True Positive | 15 |
-| True Negative | 230 |
-| False Positive | 0 |
-| False Negative | 2 |
-
-| index | value |
-|------|----|
-| Accuracy | 0.9924 |
-| Recall | 0.8824 |
-| Precision | 1.0000 |
-| F1 Score | 0.9375 |
+| Actual / Predicted | Predicted Positive (1) | Predicted Negative (0) |
+|--------------------|------------------------|------------------------|
+| Actual Positive (1) | 15 (TP)                | 2 (FN)                 |
+| Actual Negative (0) | 0 (FP)                 | 230 (TN)               |
 
