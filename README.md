@@ -37,6 +37,7 @@ python quickstart.py
 ```
 
 ## Test
+Threshhold = 0.5, keywords: 外送茶、約砲
 
 | Actual / Predicted | Predicted Positive (1) | Predicted Negative (0) |
 |--------------------|------------------------|------------------------|
