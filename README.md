@@ -35,3 +35,18 @@ Checkout and run the `quickstart.py` to try:
 ```bash
 python quickstart.py
 ```
+
+## Test
+
+|------|----|
+| True Positive | 15 |
+| True Negative | 230 |
+| False Positive | 0 |
+| False Negative | 2 |
+
+|------|----|
+| Accuracy | 0.9924 |
+| Recall | 0.8824 |
+| Precision | 1.0000 |
+| F1 Score | 0.9375 |
+
