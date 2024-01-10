@@ -1,5 +1,5 @@
 # %%
-from content_censor import Censor
+from src.censor.content_censor import Censor
 from dotenv import load_dotenv
 import pandas as pd
 import os
