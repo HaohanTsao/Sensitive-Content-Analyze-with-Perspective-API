@@ -1,3 +1,4 @@
+# %%
 import os
 from supabase import create_client, Client
 from dotenv import load_dotenv
@@ -8,14 +9,12 @@ url: str = os.environ.get("SUPABASE_API_URL")
 key: str = os.environ.get("SUPABASE_API_PUBLIC_KEY")
 supabase: Client = create_client(url, key)
 
+# %%
+# api docs: https://supabase.com/docs/reference/python/introduction
 # SELECT with filter
+query = supabase.table("posts").select("*").eq("is_deleted", False)
 
-data, count = (
-    supabase.table("posts")
-    .select("*")
-    .eq("id", "e69de0fb-c98c-428c-a2ea-7e0f862cd400")
-    .execute()
-)
-print(data)
-
-# update row with id
+# multiple filters could be chained
+query = query.eq("score", 80)
+response = query.execute()
+print(response)

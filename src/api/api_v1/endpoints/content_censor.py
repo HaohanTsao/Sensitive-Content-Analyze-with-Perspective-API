@@ -1,7 +1,8 @@
 import os
 from fastapi import APIRouter, HTTPException
 from services.content_censor.content_censor import Censor
-from src.services.slack_api.send_message import send_slack_message
+from src.services.slack.send_message import send_slack_message
+from src.services.supabase.update_table import update_table
 from src.schemas.content_censor_schema import SupabaseInsertPayload
 import logging
 from dotenv import load_dotenv
@@ -33,7 +34,12 @@ async def censor_content(req: SupabaseInsertPayload):
     # check if post is sensitive
     is_sensitive = censor_result["is_sensitive"]
     if is_sensitive:
-        # update post with id
+        # change is_deleted to True
+        update_table(
+            table_name=req.record.get("table"),
+            update_info={"is_deleted": True},
+            conditions={"id": id},
+        )
 
         # notify managers through slack
         message = f"""Dectected a post with sensitive content:
