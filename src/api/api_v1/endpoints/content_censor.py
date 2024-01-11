@@ -36,7 +36,7 @@ async def censor_content(req: SupabaseInsertPayload):
     if is_sensitive:
         # change is_deleted to True
         update_table(
-            table_name=req.record.get("table"),
+            table_name=req.table,
             update_info={"is_deleted": True},
             conditions={"id": id},
         )
