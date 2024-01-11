@@ -21,22 +21,23 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
 
 1. Create a `.env` file in the root directory.
 
-2. Add your Google Cloud Platform (GCP) API key to the `.env` file:
+2. Add your environmental variables to the `.env` file:
 
     ```env
-    API_KEY=your_GCP_api_key_here
+    ENV = dev
+    GCP_API_KEY =
+    SUPABASE_API_URL = 
+    SUPABASE_API_PUBLIC_KEY = 
+    SUPABASE_API_SECRET_KEY = 
+    SLACK_BOT_TOKEN = 
+    SLACK_CHANNEL_ID = 
     ```
-
-    Replace `your_GCP_api_key_here` with your actual GCP API key.
-
+    
 ## Usage
-Checkout and run the `quickstart.py` to try:
-
-```bash
-python quickstart.py
-```
+待補
 
 ## Test
+### perspective_api test result with actual post data
 Threshhold = 0.5, keywords: 外送茶、約砲
 
 | Actual / Predicted | Predicted Positive (1) | Predicted Negative (0) |
