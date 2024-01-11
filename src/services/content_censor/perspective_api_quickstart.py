@@ -1,4 +1,4 @@
-from services.content_censor.content_censor import Censor
+from content_censor import Censor
 import json
 from dotenv import load_dotenv
 
