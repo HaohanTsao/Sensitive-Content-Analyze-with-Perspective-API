@@ -1,4 +1,4 @@
-from src.censor.content_censor import Censor
+from services.content_censor.content_censor import Censor
 import json
 from dotenv import load_dotenv
 
@@ -11,7 +11,7 @@ CONTENT = """Content to analyze
 """
 
 
-def main():
+def perspective_api_quickstart():
     content_censor = Censor(api_key=API_KEY, sensitive_keywords=SENSITIVE_KEYWORDS)
     content = CONTENT
 
@@ -23,4 +23,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    perspective_api_quickstart()
