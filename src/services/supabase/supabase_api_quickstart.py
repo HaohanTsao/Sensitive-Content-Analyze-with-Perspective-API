@@ -12,9 +12,10 @@ supabase: Client = create_client(url, key)
 # %%
 # api docs: https://supabase.com/docs/reference/python/introduction
 # SELECT with filter
-query = supabase.table("posts").select("*").eq("is_deleted", False)
+data, count = supabase.table("webhook_test").select("*").execute()
+print(data)
 
-# multiple filters could be chained
-query = query.eq("score", 80)
-response = query.execute()
-print(response)
+# %%
+# update
+update_info = {"is_deleted": True}
+data, count = supabase.table("webhook_test").update(update_info).eq("id", 1).execute()

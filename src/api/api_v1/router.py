@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from endpoints import content_censor
+from .endpoints import content_censor
 
 router_v1 = APIRouter()
 

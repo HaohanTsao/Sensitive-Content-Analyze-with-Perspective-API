@@ -1,6 +1,6 @@
 import os
 from fastapi import APIRouter, HTTPException
-from services.content_censor.content_censor import Censor
+from src.services.content_censor.content_censor import Censor
 from src.services.slack.send_message import send_slack_message
 from src.services.supabase.update_table import update_table
 from src.schemas.content_censor_schema import SupabaseInsertPayload
@@ -50,7 +50,8 @@ toxic_score: {censor_result["toxic_score"]}
 reseasons: {censor_result["reasons"]}"""
 
         send_slack_message(message)
+        return {"status_code": 200, "is_sensitive": True}
 
     else:
         logging.info("post with id: %s passed content censor", id)
-        return
+        return {"status_code": 200, "is_sensitive": False}

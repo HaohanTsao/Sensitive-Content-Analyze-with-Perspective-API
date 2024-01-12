@@ -19,7 +19,7 @@ def send_slack_message(text: str):
         # Call the conversations.list method using the WebClient
         result = client.chat_postMessage(channel=channel_id, text=text)
         # Print result, which includes information about the message (like TS)
-        logging.info(result)
+        logging.info("Successfully sent slack message!\n")
 
     except SlackApiError as e:
         logging.error(e)
