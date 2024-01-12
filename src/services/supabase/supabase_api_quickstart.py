@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 url: str = os.environ.get("SUPABASE_API_URL")
-key: str = os.environ.get("SUPABASE_API_PUBLIC_KEY")
+key: str = os.environ.get("SUPABASE_API_SECRET_KEY")
 supabase: Client = create_client(url, key)
 
 # %%
@@ -17,5 +17,9 @@ print(data)
 
 # %%
 # update
-update_info = {"is_deleted": True}
-data, count = supabase.table("webhook_test").update(update_info).eq("id", 1).execute()
+update_info = {"content_raw": "test test test"}
+data, count = supabase.table("webhook_test").update(update_info).eq("id", "1").execute()
+
+# %%
+data
+# %%
