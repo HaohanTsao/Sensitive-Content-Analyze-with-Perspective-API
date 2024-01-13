@@ -1,6 +1,8 @@
 # Sensitive-Content-Analyze-with-Perspective-API
 
-This project utilizes the Perspective API by Google to analyze and detect sensitive content in text.
+Created a GCP Cloud Function named content_censor. Whenever a new post is inserted into Supabase, this function is triggered through a Supabase webhook. It checks for inappropriate content, and if the result of the check is true, the corresponding post is temporarily removed from the web, and a notification is sent to the administrators via Slack.
+
+This project utilizes the Perspective API by Google to analyze sensitive content in text.
 
 ## Installation
 
@@ -24,7 +26,6 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
 2. Add your environmental variables to the `.env` file:
 
     ```env
-    ENV = dev
     GCP_API_KEY =
     SUPABASE_API_URL = 
     SUPABASE_API_PUBLIC_KEY = 
@@ -33,8 +34,11 @@ This project utilizes the Perspective API by Google to analyze and detect sensit
     SLACK_CHANNEL_ID = 
     ```
     
-## Usage
-待補
+## Deploy
+
+```bash
+    gcloud functions deploy content_censor --gen2 --runtime=python39 --region=asia-east1 --source=. --entry-point=main --trigger-http --allow-unauthenticated --no-user-output-enabled
+```
 
 ## Test
 ### perspective_api test result with actual post data
