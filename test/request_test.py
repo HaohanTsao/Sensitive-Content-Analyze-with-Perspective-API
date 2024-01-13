@@ -1,6 +1,6 @@
 import requests
 
-url = ""
+url = "https://asia-east1-nth-pier-396806.cloudfunctions.net/content_censor"
 
 # 設定要測試的數據
 data = {

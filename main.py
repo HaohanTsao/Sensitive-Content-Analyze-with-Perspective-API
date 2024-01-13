@@ -5,7 +5,8 @@ load_dotenv()
 
 
 def main(req):
-    content_censor(req)
+    response = content_censor(req)
+    return response
 
 
 if __name__ == "__main__":

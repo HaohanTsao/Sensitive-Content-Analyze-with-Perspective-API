@@ -3,6 +3,7 @@ from src.services.perspective_api.censor import Censor
 from src.services.slack.send_message import send_slack_message
 from src.services.supabase.update_table import update_table
 import logging
+import functions_framework
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -38,11 +39,13 @@ type DeletePayload = {
 """
 
 
+@functions_framework.http
 def content_censor(req):
     # get post info
-    id = req.record.get("id")
-    raw_content = req.record.get("content_raw")
-    raw_title = req.record.get("title_raw")
+    req = req.get_json(silent=True)
+    id = req["record"].get("id")
+    raw_content = req["record"].get("content_raw")
+    raw_title = req["record"].get("title_raw")
     full_post = raw_title + "\n" + raw_content
 
     if full_post:
@@ -57,7 +60,7 @@ def content_censor(req):
     if is_sensitive:
         # change is_deleted to True
         update_table(
-            table_name=req.table,
+            table_name=req["table"],
             update_info={"is_deleted": True},
             conditions={"id": id},
         )
@@ -66,7 +69,7 @@ def content_censor(req):
         message = f"""Dectected a post with sensitive content:
 
 post_id: {id}
-user_id: {req.record.get("user_id")}
+user_id: {req["record"].get("user_id")}
 toxic_score: {censor_result["toxic_score"]}
 reseasons: {censor_result["reasons"]}"""
 
