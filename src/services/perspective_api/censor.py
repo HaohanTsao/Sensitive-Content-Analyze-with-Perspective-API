@@ -51,7 +51,8 @@ class Censor:
             if sensitive_keyword in content:
                 is_sensitive = True
                 matched_keywords.append(sensitive_keyword)
-        if is_sensitive:
+
+        if matched_keywords != []:
             output["matched_keywords"] = matched_keywords
             reasons.append(f'Detected sensitive keywords: {" ".join(matched_keywords)}')
 
