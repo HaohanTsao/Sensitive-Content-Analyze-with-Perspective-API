@@ -1,6 +1,6 @@
 # Sensitive-Content-Analyze-with-Perspective-API
 
-Created a Cloud Function named content_censor. Whenever a new post is inserted into Supabase, this function is triggered through a Supabase webhook. It checks for inappropriate content, and if the result of the check is true, the corresponding post is temporarily removed from the web, and a notification is sent to the administrators via Slack.
+Created a GCP Cloud Function named content_censor. Whenever a new post is inserted into Supabase, this function is triggered through a Supabase webhook. It checks for inappropriate content, and if the result of the check is true, the corresponding post is temporarily removed from the web, and a notification is sent to the administrators via Slack.
 
 This project utilizes the Perspective API by Google to analyze sensitive content in text.
 
