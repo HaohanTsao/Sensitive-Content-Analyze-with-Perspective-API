@@ -1,22 +1,44 @@
 import os
-from fastapi import APIRouter, HTTPException
-from src.services.content_censor.content_censor import Censor
+from src.services.perspective_api.censor import Censor
 from src.services.slack.send_message import send_slack_message
 from src.services.supabase.update_table import update_table
-from src.schemas.content_censor_schema import SupabaseInsertPayload
 import logging
 from dotenv import load_dotenv
 
 load_dotenv()
-
-router = APIRouter()
 censor = Censor(
     api_key=os.getenv("GCP_API_KEY"), sensitive_keywords=["約炮", "約砲", "外送茶"]
 )
 
 
-@router.post("/content_censor")
-async def censor_content(req: SupabaseInsertPayload):
+"""
+supabase webhook payload:
+
+type InsertPayload = {
+  type: 'INSERT'
+  table: string
+  schema: string
+  record: TableRecord<T>
+  old_record: null
+}
+type UpdatePayload = {
+  type: 'UPDATE'
+  table: string
+  schema: string
+  record: TableRecord<T>
+  old_record: TableRecord<T>
+}
+type DeletePayload = {
+  type: 'DELETE'
+  table: string
+  schema: string
+  record: null
+  old_record: TableRecord<T>
+}
+"""
+
+
+def content_censor(req):
     # get post info
     id = req.record.get("id")
     raw_content = req.record.get("content_raw")
@@ -29,7 +51,6 @@ async def censor_content(req: SupabaseInsertPayload):
 
     else:
         logging.error("post is null with id: %s", id)
-        raise HTTPException(status_code=400, detail="Invalid input: full_post is None")
 
     # check if post is sensitive
     is_sensitive = censor_result["is_sensitive"]
