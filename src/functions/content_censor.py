@@ -71,7 +71,12 @@ def content_censor(req):
 post_id: {id}
 user_id: {req["record"].get("user_id")}
 toxic_score: {censor_result["toxic_score"]}
-reseasons: {censor_result["reasons"]}"""
+reseasons: {censor_result["reasons"]}
+content:
+
+{full_post}
+
+"""
 
         send_slack_message(message)
         return {"status_code": 200, "is_sensitive": True}
