@@ -33,7 +33,13 @@ This project utilizes the Perspective API by Google to analyze sensitive content
     SLACK_BOT_TOKEN = 
     SLACK_CHANNEL_ID = 
     ```
-    
+## Usage
+* Supabaase webhook: [https://supabase.com/docs/guides/database/webhooks]
+* Supabase API: [https://supabase.com/docs/reference/python/initializing]
+* Slack API: [https://api.slack.com/messaging/sending]
+* GCP Cloud Function: [https://cloud.google.com/functions/docs/concepts/overview]
+* Perspective API: [https://developers.perspectiveapi.com/s/docs-get-started?language=en_US]
+
 ## Deploy
 
 ```bash
