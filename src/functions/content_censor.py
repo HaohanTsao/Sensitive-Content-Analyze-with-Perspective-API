@@ -80,28 +80,28 @@ content:
 """
         send_slack_message(msg_to_admin)
 
-    #         # notify user
-    #         user_email = get_table(
-    #             "profiles", conditions={"id": req["record"].get("user_id")}
-    #         )[1][0].get("email")
+        #         # notify user
+        #         user_email = get_table(
+        #             "profiles", conditions={"id": req["record"].get("user_id")}
+        #         )[1][0].get("email")
 
-    #         msg_to_user = """
-    # 親愛的用戶:
+        #         msg_to_user = """
+        # 親愛的用戶:
 
-    # 我們在您的貼文中偵測出敏感內容，目前暫時從頁面中移除，我們會在確認後決定是否恢復貼文。
+        # 我們在您的貼文中偵測出敏感內容，目前暫時從頁面中移除，我們會在確認後決定是否恢復貼文。
 
-    # OfferLand 敬上
-    # """
+        # OfferLand 敬上
+        # """
 
-    #         send_email(
-    #             os.getenv("EMAIL"),
-    #             os.getenv("EMAIL_APP_PASSWORD"),
-    #             user_email,
-    #             "Sensitive Content Alert",
-    #             msg_to_user,
-    #         )
+        #         send_email(
+        #             os.getenv("EMAIL"),
+        #             os.getenv("EMAIL_APP_PASSWORD"),
+        #             user_email,
+        #             "Sensitive Content Alert",
+        #             msg_to_user,
+        #         )
 
-    #         return {"status_code": 200, "is_sensitive": True}
+        return {"status_code": 200, "is_sensitive": True}
 
     else:
         logging.info("post with id: %s passed content censor", id)
