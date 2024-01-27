@@ -1,4 +1,4 @@
-from content_censor import Censor
+from src.functions.content_censor import Censor
 import json
 from dotenv import load_dotenv
 

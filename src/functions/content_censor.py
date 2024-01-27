@@ -1,7 +1,8 @@
 import os
 from src.services.perspective_api.censor import Censor
 from src.services.slack.send_message import send_slack_message
-from src.services.supabase.update_table import update_table
+from src.services.supabase.table_functions import update_table, get_table
+from src.services.email.send_email import send_email
 import logging
 import functions_framework
 from dotenv import load_dotenv
@@ -66,20 +67,41 @@ def content_censor(req):
         )
 
         # notify managers through slack
-        message = f"""Dectected a post with sensitive content:
+        msg_to_admin = f"""Dectected a post with sensitive content:
 
 post_id: {id}
 user_id: {req["record"].get("user_id")}
 toxic_score: {censor_result["toxic_score"]}
 reseasons: {censor_result["reasons"]}
+title: {raw_title}
 content:
-
-{full_post}
+{raw_content}
 
 """
+        send_slack_message(msg_to_admin)
 
-        send_slack_message(message)
-        return {"status_code": 200, "is_sensitive": True}
+    #         # notify user
+    #         user_email = get_table(
+    #             "profiles", conditions={"id": req["record"].get("user_id")}
+    #         )[1][0].get("email")
+
+    #         msg_to_user = """
+    # 親愛的用戶:
+
+    # 我們在您的貼文中偵測出敏感內容，目前暫時從頁面中移除，我們會在確認後決定是否恢復貼文。
+
+    # OfferLand 敬上
+    # """
+
+    #         send_email(
+    #             os.getenv("EMAIL"),
+    #             os.getenv("EMAIL_APP_PASSWORD"),
+    #             user_email,
+    #             "Sensitive Content Alert",
+    #             msg_to_user,
+    #         )
+
+    #         return {"status_code": 200, "is_sensitive": True}
 
     else:
         logging.info("post with id: %s passed content censor", id)
